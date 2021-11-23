@@ -1,0 +1,20 @@
+apiVersion: openeoe.k8s.io/v1alpha1
+kind: Migration
+metadata:
+  name: migrations1
+spec:
+  migrationServiceSource:
+  - sourceCluster: cluster2
+    targetCluster: cluster1
+    nameSpace: default
+    serviceName: iotservice
+    migrationSource:
+    - resourceName: iot-gateway
+      resourceType: Deployment
+    - resourceName: iot-gateway-sv
+      resourceType: Service
+#    - resourceName: iot-gateway-pv
+#      resourceType: PersistentVolume
+#    - resourceName: iot-gateway-pvc
+#      resourceType: PersistentVolumeClaim
+

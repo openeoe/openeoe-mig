@@ -1,0 +1,920 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: testim-dp1
+  namespace: testmig
+  labels: 
+    name: testim-dp1
+    app: testim1
+spec: 
+  selector: 
+    matchLabels: 
+      app: testim1
+  template: 
+    metadata: 
+      labels: 
+        app: testim1
+    spec: 
+      containers: 
+      - name: testim
+        image: ubuntu:16.04
+        command: ["sh", "-c", "chmod a+x /entrypoint.sh; /entrypoint.sh; sleep 100000000;"]
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8080
+        env: 
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375 
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: testim-sv1
+  namespace: testmig
+  labels: 
+    app: testim1
+spec: 
+  type: NodePort
+  ports: 
+  - name: testim-web
+    port: 31301
+    targetPort: 8080
+    protocol: TCP
+    nodePort: 31301
+  selector: 
+    app: testim1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: testim-dp2
+  namespace: testmig
+  labels: 
+    name: testim-dp2
+    app: testim2
+spec: 
+  selector: 
+    matchLabels: 
+      app: testim2
+  template: 
+    metadata: 
+      labels: 
+        app: testim2
+    spec: 
+      containers: 
+      - name: testim
+        image: ubuntu:16.04
+        command: ["sh", "-c", "chmod a+x /entrypoint.sh; /entrypoint.sh; sleep 100000000;"]
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8080
+        env: 
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375 
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: testim-sv2
+  namespace: testmig
+  labels: 
+    app: testim2
+spec: 
+  type: NodePort
+  ports: 
+  - name: testim-web
+    port: 31302
+    targetPort: 8080
+    protocol: TCP
+    nodePort: 31302
+  selector: 
+    app: testim2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: testim-dp3
+  namespace: testmig
+  labels: 
+    name: testim-dp3
+    app: testim3
+spec: 
+  selector: 
+    matchLabels: 
+      app: testim3
+  template: 
+    metadata: 
+      labels: 
+        app: testim3
+    spec: 
+      containers: 
+      - name: testim
+        image: ubuntu:16.04
+        command: ["sh", "-c", "chmod a+x /entrypoint.sh; /entrypoint.sh; sleep 100000000;"]
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8080
+        env: 
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375 
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: testim-sv3
+  namespace: testmig
+  labels: 
+    app: testim1
+spec: 
+  type: NodePort
+  ports: 
+  - name: testim-web
+    port: 31303
+    targetPort: 8080
+    protocol: TCP
+    nodePort: 31303
+  selector: 
+    app: testim3
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: testim-dp4
+  namespace: testmig
+  labels: 
+    name: testim-dp4
+    app: testim4
+spec: 
+  selector: 
+    matchLabels: 
+      app: testim4
+  template: 
+    metadata: 
+      labels: 
+        app: testim4
+    spec: 
+      containers: 
+      - name: testim
+        image: ubuntu:16.04
+        command: ["sh", "-c", "chmod a+x /entrypoint.sh; /entrypoint.sh; sleep 100000000;"]
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8080
+        env: 
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375 
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: testim-sv4
+  namespace: testmig
+  labels: 
+    app: testim4
+spec: 
+  type: NodePort
+  ports: 
+  - name: testim-web
+    port: 31304
+    targetPort: 8080
+    protocol: TCP
+    nodePort: 31304
+  selector: 
+    app: testim4
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: testim-dp5
+  namespace: testmig
+  labels: 
+    name: testim-dp5
+    app: testim5
+spec: 
+  selector: 
+    matchLabels: 
+      app: testim5
+  template: 
+    metadata: 
+      labels: 
+        app: testim5
+    spec: 
+      containers: 
+      - name: testim
+        image: ubuntu:16.04
+        command: ["sh", "-c", "chmod a+x /entrypoint.sh; /entrypoint.sh; sleep 100000000;"]
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8080
+        env: 
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375 
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: testim-sv5
+  namespace: testmig
+  labels: 
+    app: testim5
+spec: 
+  type: NodePort
+  ports: 
+  - name: testim-web
+    port: 31305
+    targetPort: 8080
+    protocol: TCP
+    nodePort: 31305
+  selector: 
+    app: testim5
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: testim-dp6
+  namespace: testmig
+  labels: 
+    name: testim-dp6
+    app: testim6
+spec: 
+  selector: 
+    matchLabels: 
+      app: testim6
+  template: 
+    metadata: 
+      labels: 
+        app: testim6
+    spec: 
+      containers: 
+      - name: testim
+        image: ubuntu:16.04
+        command: ["sh", "-c", "chmod a+x /entrypoint.sh; /entrypoint.sh; sleep 100000000;"]
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8080
+        env: 
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375 
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: testim-sv6
+  namespace: testmig
+  labels: 
+    app: testim6
+spec: 
+  type: NodePort
+  ports: 
+  - name: testim-web
+    port: 31306
+    targetPort: 8080
+    protocol: TCP
+    nodePort: 31306
+  selector: 
+    app: testim6
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: testim-dp7
+  namespace: testmig
+  labels: 
+    name: testim-dp7
+    app: testim7
+spec: 
+  selector: 
+    matchLabels: 
+      app: testim7
+  template: 
+    metadata: 
+      labels: 
+        app: testim7
+    spec: 
+      containers: 
+      - name: testim
+        image: ubuntu:16.04
+        command: ["sh", "-c", "chmod a+x /entrypoint.sh; /entrypoint.sh; sleep 100000000;"]
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8080
+        env: 
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375 
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: testim-sv7
+  namespace: testmig
+  labels: 
+    app: testim7
+spec: 
+  type: NodePort
+  ports: 
+  - name: testim-web
+    port: 31307
+    targetPort: 8080
+    protocol: TCP
+    nodePort: 31307
+  selector: 
+    app: testim7
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: testim-dp8
+  namespace: testmig
+  labels: 
+    name: testim-dp8
+    app: testim8
+spec: 
+  selector: 
+    matchLabels: 
+      app: testim8
+  template: 
+    metadata: 
+      labels: 
+        app: testim8
+    spec: 
+      containers: 
+      - name: testim
+        image: ubuntu:16.04
+        command: ["sh", "-c", "chmod a+x /entrypoint.sh; /entrypoint.sh; sleep 100000000;"]
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8080
+        env: 
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375 
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: testim-sv8
+  namespace: testmig
+  labels: 
+    app: testim8
+spec: 
+  type: NodePort
+  ports: 
+  - name: testim-web
+    port: 31308
+    targetPort: 8080
+    protocol: TCP
+    nodePort: 31308
+  selector: 
+    app: testim1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: testim-dp9
+  namespace: testmig
+  labels: 
+    name: testim-dp9
+    app: testim9
+spec: 
+  selector: 
+    matchLabels: 
+      app: testim9
+  template: 
+    metadata: 
+      labels: 
+        app: testim9
+    spec: 
+      containers: 
+      - name: testim
+        image: ubuntu:16.04
+        command: ["sh", "-c", "chmod a+x /entrypoint.sh; /entrypoint.sh; sleep 100000000;"]
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8080
+        env: 
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375 
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: testim-sv9
+  namespace: testmig
+  labels: 
+    app: testim9
+spec: 
+  type: NodePort
+  ports: 
+  - name: testim-web
+    port: 31309
+    targetPort: 8080
+    protocol: TCP
+    nodePort: 31309
+  selector: 
+    app: testim9
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: testim-dp10
+  namespace: testmig
+  labels: 
+    name: testim-dp10
+    app: testim10
+spec: 
+  selector: 
+    matchLabels: 
+      app: testim10
+  template: 
+    metadata: 
+      labels: 
+        app: testim10
+    spec: 
+      containers: 
+      - name: testim
+        image: ubuntu:16.04
+        command: ["sh", "-c", "chmod a+x /entrypoint.sh; /entrypoint.sh; sleep 100000000;"]
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8080
+        env: 
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375 
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: testim-sv10
+  namespace: testmig
+  labels: 
+    app: testim10
+spec: 
+  type: NodePort
+  ports: 
+  - name: testim-web
+    port: 31310
+    targetPort: 8080
+    protocol: TCP
+    nodePort: 31310
+  selector: 
+    app: testim10
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: testim-dp11
+  namespace: testmig
+  labels: 
+    name: testim-dp11
+    app: testim11
+spec: 
+  selector: 
+    matchLabels: 
+      app: testim11
+  template: 
+    metadata: 
+      labels: 
+        app: testim11
+    spec: 
+      containers: 
+      - name: testim
+        image: ubuntu:16.04
+        command: ["sh", "-c", "chmod a+x /entrypoint.sh; /entrypoint.sh; sleep 100000000;"]
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8080
+        env: 
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375 
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: testim-sv11
+  namespace: testmig
+  labels: 
+    app: testim11
+spec: 
+  type: NodePort
+  ports: 
+  - name: testim-web
+    port: 31311
+    targetPort: 8080
+    protocol: TCP
+    nodePort: 31311
+  selector: 
+    app: testim11
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: testim-dp12
+  namespace: testmig
+  labels: 
+    name: testim-dp12
+    app: testim12
+spec: 
+  selector: 
+    matchLabels: 
+      app: testim12
+  template: 
+    metadata: 
+      labels: 
+        app: testim12
+    spec: 
+      containers: 
+      - name: testim
+        image: ubuntu:16.04
+        command: ["sh", "-c", "chmod a+x /entrypoint.sh; /entrypoint.sh; sleep 100000000;"]
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8080
+        env: 
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375 
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: testim-sv12
+  namespace: testmig
+  labels: 
+    app: testim12
+spec: 
+  type: NodePort
+  ports: 
+  - name: testim-web
+    port: 31312
+    targetPort: 8080
+    protocol: TCP
+    nodePort: 31312
+  selector: 
+    app: testim12
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: testim-dp13
+  namespace: testmig
+  labels: 
+    name: testim-dp13
+    app: testim13
+spec: 
+  selector: 
+    matchLabels: 
+      app: testim13
+  template: 
+    metadata: 
+      labels: 
+        app: testim13
+    spec: 
+      containers: 
+      - name: testim
+        image: ubuntu:16.04
+        command: ["sh", "-c", "chmod a+x /entrypoint.sh; /entrypoint.sh; sleep 100000000;"]
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8080
+        env: 
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375 
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: testim-sv13
+  namespace: testmig
+  labels: 
+    app: testim13
+spec: 
+  type: NodePort
+  ports: 
+  - name: testim-web
+    port: 31313
+    targetPort: 8080
+    protocol: TCP
+    nodePort: 31313
+  selector: 
+    app: testim13
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: testim-dp14
+  namespace: testmig
+  labels: 
+    name: testim-dp14
+    app: testim14
+spec: 
+  selector: 
+    matchLabels: 
+      app: testim14
+  template: 
+    metadata: 
+      labels: 
+        app: testim14
+    spec: 
+      containers: 
+      - name: testim
+        image: ubuntu:16.04
+        command: ["sh", "-c", "chmod a+x /entrypoint.sh; /entrypoint.sh; sleep 100000000;"]
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8080
+        env: 
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375 
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: testim-sv14
+  namespace: testmig
+  labels: 
+    app: testim14
+spec: 
+  type: NodePort
+  ports: 
+  - name: testim-web
+    port: 31314
+    targetPort: 8080
+    protocol: TCP
+    nodePort: 31314
+  selector: 
+    app: testim14
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: testim-dp15
+  namespace: testmig
+  labels: 
+    name: testim-dp15
+    app: testim15
+spec: 
+  selector: 
+    matchLabels: 
+      app: testim15
+  template: 
+    metadata: 
+      labels: 
+        app: testim15
+    spec: 
+      containers: 
+      - name: testim
+        image: ubuntu:16.04
+        command: ["sh", "-c", "chmod a+x /entrypoint.sh; /entrypoint.sh; sleep 100000000;"]
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8080
+        env: 
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375 
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: testim-sv15
+  namespace: testmig
+  labels: 
+    app: testim15
+spec: 
+  type: NodePort
+  ports: 
+  - name: testim-web
+    port: 31315
+    targetPort: 8080
+    protocol: TCP
+    nodePort: 31315
+  selector: 
+    app: testim15
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: testim-dp16
+  namespace: testmig
+  labels: 
+    name: testim-dp16
+    app: testim16
+spec: 
+  selector: 
+    matchLabels: 
+      app: testim16
+  template: 
+    metadata: 
+      labels: 
+        app: testim16
+    spec: 
+      containers: 
+      - name: testim
+        image: ubuntu:16.04
+        command: ["sh", "-c", "chmod a+x /entrypoint.sh; /entrypoint.sh; sleep 100000000;"]
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8080
+        env: 
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375 
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: testim-sv16
+  namespace: testmig
+  labels: 
+    app: testim16
+spec: 
+  type: NodePort
+  ports: 
+  - name: testim-web
+    port: 31316
+    targetPort: 8080
+    protocol: TCP
+    nodePort: 31316
+  selector: 
+    app: testim16
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: testim-dp17
+  namespace: testmig
+  labels: 
+    name: testim-dp17
+    app: testim17
+spec: 
+  selector: 
+    matchLabels: 
+      app: testim17
+  template: 
+    metadata: 
+      labels: 
+        app: testim17
+    spec: 
+      containers: 
+      - name: testim
+        image: ubuntu:16.04
+        command: ["sh", "-c", "chmod a+x /entrypoint.sh; /entrypoint.sh; sleep 100000000;"]
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8080
+        env: 
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375 
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: testim-sv17
+  namespace: testmig
+  labels: 
+    app: testim17
+spec: 
+  type: NodePort
+  ports: 
+  - name: testim-web
+    port: 31317
+    targetPort: 8080
+    protocol: TCP
+    nodePort: 31317
+  selector: 
+    app: testim17
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: testim-dp18
+  namespace: testmig
+  labels: 
+    name: testim-dp18
+    app: testim18
+spec: 
+  selector: 
+    matchLabels: 
+      app: testim18
+  template: 
+    metadata: 
+      labels: 
+        app: testim18
+    spec: 
+      containers: 
+      - name: testim
+        image: ubuntu:16.04
+        command: ["sh", "-c", "chmod a+x /entrypoint.sh; /entrypoint.sh; sleep 100000000;"]
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8080
+        env: 
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375 
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: testim-sv18
+  namespace: testmig
+  labels: 
+    app: testim18
+spec: 
+  type: NodePort
+  ports: 
+  - name: testim-web
+    port: 31318
+    targetPort: 8080
+    protocol: TCP
+    nodePort: 31318
+  selector: 
+    app: testim18
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: testim-dp19
+  namespace: testmig
+  labels: 
+    name: testim-dp19
+    app: testim19
+spec: 
+  selector: 
+    matchLabels: 
+      app: testim19
+  template: 
+    metadata: 
+      labels: 
+        app: testim19
+    spec: 
+      containers: 
+      - name: testim
+        image: ubuntu:16.04
+        command: ["sh", "-c", "chmod a+x /entrypoint.sh; /entrypoint.sh; sleep 100000000;"]
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8080
+        env: 
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375 
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: testim-sv19
+  namespace: testmig
+  labels: 
+    app: testim19
+spec: 
+  type: NodePort
+  ports: 
+  - name: testim-web
+    port: 31319
+    targetPort: 8080
+    protocol: TCP
+    nodePort: 31319
+  selector: 
+    app: testim19
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: testim-dp20
+  namespace: testmig
+  labels: 
+    name: testim-dp20
+    app: testim20
+spec: 
+  selector: 
+    matchLabels: 
+      app: testim20
+  template: 
+    metadata: 
+      labels: 
+        app: testim20
+    spec: 
+      containers: 
+      - name: testim
+        image: ubuntu:16.04
+        command: ["sh", "-c", "chmod a+x /entrypoint.sh; /entrypoint.sh; sleep 100000000;"]
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8080
+        env: 
+          - name: DOCKER_HOST
+            value: tcp://localhost:2375 
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: testim-sv20
+  namespace: testmig
+  labels: 
+    app: testim20
+spec: 
+  type: NodePort
+  ports: 
+  - name: testim-web
+    port: 31320
+    targetPort: 8080
+    protocol: TCP
+    nodePort: 31320
+  selector: 
+    app: testim20
+---

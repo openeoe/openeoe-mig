@@ -1,0 +1,91 @@
+apiVersion: openeoe.k8s.io/v1alpha1
+kind: Migration
+metadata:
+  name: migrations
+spec:
+  MigrationServiceSource:
+  - SourceCluster: cluster1
+    TargetCluster: cluster2
+    NameSpace: testmig
+    ServiceName: testim
+    MigrationSource:
+    - ResourceName: testim-dp1
+      ResourceType: Deployment
+    - ResourceName: testim-sv1
+      ResourceType: Service
+    - ResourceName: testim-dp2
+      ResourceType: Deployment
+    - ResourceName: testim-sv2
+      ResourceType: Service
+    - ResourceName: testim-dp3
+      ResourceType: Deployment
+    - ResourceName: testim-sv3
+      ResourceType: Service 
+    - ResourceName: testim-dp4
+      ResourceType: Deployment
+    - ResourceName: testim-sv4
+      ResourceType: Service
+    - ResourceName: testim-dp5
+      ResourceType: Deployment
+    - ResourceName: testim-sv5
+      ResourceType: Service 
+    - ResourceName: testim-dp6
+      ResourceType: Deployment
+    - ResourceName: testim-sv6
+      ResourceType: Service
+    - ResourceName: testim-dp7
+      ResourceType: Deployment
+    - ResourceName: testim-sv7
+      ResourceType: Service
+    - ResourceName: testim-dp8
+      ResourceType: Deployment
+    - ResourceName: testim-sv8
+      ResourceType: Service
+    - ResourceName: testim-dp9
+      ResourceType: Deployment
+    - ResourceName: testim-sv9
+      ResourceType: Service
+    - ResourceName: testim-dp10
+      ResourceType: Deployment
+    - ResourceName: testim-sv10
+      ResourceType: Service
+    - ResourceName: testim-dp11
+      ResourceType: Deployment
+    - ResourceName: testim-sv11
+      ResourceType: Service
+    - ResourceName: testim-dp12
+      ResourceType: Deployment
+    - ResourceName: testim-sv12
+      ResourceType: Service
+    - ResourceName: testim-dp13
+      ResourceType: Deployment
+    - ResourceName: testim-sv13
+      ResourceType: Service 
+    - ResourceName: testim-dp14
+      ResourceType: Deployment
+    - ResourceName: testim-sv14
+      ResourceType: Service
+    - ResourceName: testim-dp15
+      ResourceType: Deployment
+    - ResourceName: testim-sv15
+      ResourceType: Service 
+    - ResourceName: testim-dp16
+      ResourceType: Deployment
+    - ResourceName: testim-sv16
+      ResourceType: Service
+    - ResourceName: testim-dp17
+      ResourceType: Deployment
+    - ResourceName: testim-sv17
+      ResourceType: Service
+    - ResourceName: testim-dp18
+      ResourceType: Deployment
+    - ResourceName: testim-sv18
+      ResourceType: Service
+    - ResourceName: testim-dp19
+      ResourceType: Deployment
+    - ResourceName: testim-sv19
+      ResourceType: Service
+    - ResourceName: testim-dp20
+      ResourceType: Deployment
+    - ResourceName: testim-sv20
+      ResourceType: Service
